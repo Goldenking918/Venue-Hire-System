@@ -22,6 +22,10 @@ public class VenueHireSystem {
         this.venueCode = venueCode;
         this.capacityInput = capacityInput;
         this.hireFeeInput = hireFeeInput;
+        if (venueName == "") {
+          MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
+          return;
+        }
         MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
     
   }
