@@ -16,7 +16,21 @@ public class VenueHireSystem {
   public VenueHireSystem() {}
 
   public void printVenues() {
-    MessageCli.NO_VENUES.printMessage();
+    if (venueNames.size() == 0) {
+      MessageCli.NO_VENUES.printMessage();
+      return;
+    }
+    else if (venueNames.size() == 1) {
+      MessageCli.NUMBER_VENUES.printMessage("is", "1", "");
+    }
+    else if (venueNames.size() >= 2 && venueNames.size() < 10) {
+      String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
+      MessageCli.NUMBER_VENUES.printMessage("are", numbers[venueNames.size() - 1], "s");
+    }
+    else {
+      String size = Integer.toString(venueNames.size());
+      MessageCli.NUMBER_VENUES.printMessage("are", size, "s");
+    }
   }
 
   public void createVenue(
