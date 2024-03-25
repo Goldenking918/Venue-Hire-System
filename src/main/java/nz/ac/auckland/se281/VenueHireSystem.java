@@ -34,13 +34,21 @@ public class VenueHireSystem {
           }
         }
         try {
-          Integer.parseInt(hireFeeInput);
+          int hirefee = Integer.parseInt(hireFeeInput);
+          if (hirefee < 0) {
+            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", " positive");
+            return;
+          }
         } catch (Exception e) {
           MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
           return;
         }
         try {
-          Integer.parseInt(capacityInput);
+          int capacity = Integer.parseInt(capacityInput);
+          if (capacity < 0) {
+            MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", " positive");
+            return;
+          }
         } catch (Exception e) {
           MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
           return;
