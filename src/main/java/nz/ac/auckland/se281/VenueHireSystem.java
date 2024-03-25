@@ -21,7 +21,7 @@ public class VenueHireSystem {
       return;
     }
     else if (venueNames.size() == 1) {
-      MessageCli.NUMBER_VENUES.printMessage("is", "1", "");
+      MessageCli.NUMBER_VENUES.printMessage("is", "one", "");
     }
     else if (venueNames.size() >= 2 && venueNames.size() < 10) {
       String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -30,6 +30,9 @@ public class VenueHireSystem {
     else {
       String size = Integer.toString(venueNames.size());
       MessageCli.NUMBER_VENUES.printMessage("are", size, "s");
+    }
+    for (int i = 0; i < venueNames.size(); i++) {
+      MessageCli.VENUE_ENTRY.printMessage(venueNames.get(i), venueCodes.get(i), capacities.get(i), hirefees.get(i), "N/A");
     }
   }
 
