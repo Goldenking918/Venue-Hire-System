@@ -1,13 +1,16 @@
 package nz.ac.auckland.se281;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  private String venueName;
-  private String venueCode;
-  private String capacityInput;
-  private String hireFeeInput;
+  public ArrayList<String> venueNames = new ArrayList<String>();
+  public ArrayList<String> venueCodes = new ArrayList<String>();
+  public ArrayList<String> capacities = new ArrayList<String>();
+  public ArrayList<String> hirefees = new ArrayList<String>();
 
 
   public VenueHireSystem() {}
@@ -18,14 +21,22 @@ public class VenueHireSystem {
 
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
-        this.venueName = venueName;
-        this.venueCode = venueCode;
-        this.capacityInput = capacityInput;
-        this.hireFeeInput = hireFeeInput;
+
         if (venueName == "") {
           MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
           return;
         }
+        for (String a: venueCodes) {
+          if (a.equals(venueCode)) {
+            String name = venueNames.get(venueCodes.indexOf(a));
+            MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venueCode, name);
+            return;
+          }
+        }
+        venueNames.add(venueName);
+        venueCodes.add(venueCode);
+        capacities.add(capacityInput);
+        hirefees.add(hireFeeInput);
         MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
     
   }
