@@ -33,6 +33,18 @@ public class VenueHireSystem {
             return;
           }
         }
+        try {
+          Integer.parseInt(hireFeeInput);
+        } catch (Exception e) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("hire fee", "");
+          return;
+        }
+        try {
+          Integer.parseInt(capacityInput);
+        } catch (Exception e) {
+          MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
+          return;
+        }
         venueNames.add(venueName);
         venueCodes.add(venueCode);
         capacities.add(capacityInput);
