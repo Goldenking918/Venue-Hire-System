@@ -25,7 +25,7 @@ public class VenueHireSystem {
     }
     else if (venueNames.size() >= 2 && venueNames.size() < 10) {
       String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
-      MessageCli.NUMBER_VENUES.printMessage("are", numbers[venueNames.size() - 1], "s");
+      MessageCli.NUMBER_VENUES.printMessage("are", numbers[venueNames.size() - 2], "s");
     }
     else {
       String size = Integer.toString(venueNames.size());
@@ -39,7 +39,7 @@ public class VenueHireSystem {
   public void createVenue(
       String venueName, String venueCode, String capacityInput, String hireFeeInput) {
 
-        if (venueName == "") {
+        if (venueName.trim() == "") {
           MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
           return;
         }
