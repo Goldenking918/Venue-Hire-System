@@ -86,6 +86,10 @@ public class VenueHireSystem {
   }
 
   public void printSystemDate() {
+    if (this.dateInput == null) {
+      MessageCli.CURRENT_DATE.printMessage("not set");
+      return;
+    }
     MessageCli.CURRENT_DATE.printMessage(this.dateInput);
   }
 
