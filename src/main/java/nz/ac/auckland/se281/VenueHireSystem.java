@@ -86,7 +86,7 @@ public class VenueHireSystem {
   }
 
   public void printSystemDate() {
-    // TODO implement this method
+    MessageCli.CURRENT_DATE.printMessage(this.dateInput);
   }
 
   public void makeBooking(String[] options) {
