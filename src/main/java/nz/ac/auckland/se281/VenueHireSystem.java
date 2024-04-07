@@ -1,40 +1,35 @@
 package nz.ac.auckland.se281;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import nz.ac.auckland.se281.Types.CateringType;
 import nz.ac.auckland.se281.Types.FloralType;
 
 public class VenueHireSystem {
-  public ArrayList<String> venueNames = new ArrayList<String>();
-  public ArrayList<String> venueCodes = new ArrayList<String>();
-  public ArrayList<String> capacities = new ArrayList<String>();
-  public ArrayList<String> hirefees = new ArrayList<String>();
+
+  public ArrayList<Venue> venues = new ArrayList<Venue>();
   public String dateInput;
   
-
-
   public VenueHireSystem() {}
 
   public void printVenues() {
-    if (venueNames.size() == 0) {
+    if (venues.size() == 0) {
       MessageCli.NO_VENUES.printMessage();
       return;
     }
-    else if (venueNames.size() == 1) {
+    else if (venues.size() == 1) {
       MessageCli.NUMBER_VENUES.printMessage("is", "one", "");
     }
-    else if (venueNames.size() >= 2 && venueNames.size() < 10) {
+    else if (venues.size() >= 2 && venues.size() < 10) {
       String[] numbers = {"two", "three", "four", "five", "six", "seven", "eight", "nine"};
-      MessageCli.NUMBER_VENUES.printMessage("are", numbers[venueNames.size() - 2], "s");
+      MessageCli.NUMBER_VENUES.printMessage("are", numbers[venues.size() - 2], "s");
     }
     else {
-      String size = Integer.toString(venueNames.size());
+      String size = Integer.toString(venues.size());
       MessageCli.NUMBER_VENUES.printMessage("are", size, "s");
     }
-    for (int i = 0; i < venueNames.size(); i++) {
-      MessageCli.VENUE_ENTRY.printMessage(venueNames.get(i), venueCodes.get(i), capacities.get(i), hirefees.get(i), "N/A");
+    for (int i = 0; i < venues.size(); i++) {
+      MessageCli.VENUE_ENTRY.printMessage(venues.get(i).getVenueName(), venues.get(i).getVenueCode(), venues.get(i).getCapacityInput(), venues.get(i).getHireFee(), "N/A");
     }
   }
 
@@ -45,9 +40,9 @@ public class VenueHireSystem {
           MessageCli.VENUE_NOT_CREATED_EMPTY_NAME.printMessage();
           return;
         }
-        for (String a: venueCodes) {
-          if (a.equals(venueCode)) {
-            String name = venueNames.get(venueCodes.indexOf(a));
+        for (int i = 0; i < venues.size(); i++) {
+          if (venues.get(i).getVenueCode().equals(venueCode)) {
+            String name = venues.get(i).getVenueName();
             MessageCli.VENUE_NOT_CREATED_CODE_EXISTS.printMessage(venueCode, name);
             return;
           }
@@ -72,10 +67,8 @@ public class VenueHireSystem {
           MessageCli.VENUE_NOT_CREATED_INVALID_NUMBER.printMessage("capacity", "");
           return;
         }
-        venueNames.add(venueName);
-        venueCodes.add(venueCode);
-        capacities.add(capacityInput);
-        hirefees.add(hireFeeInput);
+
+        venues.add(new Venue(venueName, venueCode, capacityInput, hireFeeInput));
         MessageCli.VENUE_SUCCESSFULLY_CREATED.printMessage(venueName, venueCode);
     
   }
