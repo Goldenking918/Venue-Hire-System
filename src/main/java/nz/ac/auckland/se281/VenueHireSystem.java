@@ -9,6 +9,7 @@ public class VenueHireSystem {
 
   public ArrayList<Venue> venues = new ArrayList<Venue>();
   public String dateInput;
+  public String bookingname;
   
   public VenueHireSystem() {}
 
@@ -95,6 +96,19 @@ public class VenueHireSystem {
       MessageCli.BOOKING_NOT_MADE_NO_VENUES.printMessage();
       return;
     }
+    for (int i = 0; i < venues.size(); i++) {
+      if (venues.get(i).getVenueCode().equals(options[0])) {
+        bookingname = venues.get(i).getVenueName();
+        break;
+      }
+      if (i == venues.size() - 1) {
+        MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
+        return;
+      }
+
+    }
+    String bookingReference = BookingReferenceGenerator.generateBookingReference();
+    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], options[3]);
   }
 
   public void printBookings(String venueCode) {
