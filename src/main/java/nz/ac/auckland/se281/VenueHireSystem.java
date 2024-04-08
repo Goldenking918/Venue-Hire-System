@@ -179,6 +179,11 @@ public class VenueHireSystem {
         return;
       }
     }
+    for (int i = 0; i < bookings.size(); i++) {
+      if (bookings.get(i).getVenueCode().equals(venueCode)) {
+        MessageCli.PRINT_BOOKINGS_ENTRY.printMessage(bookings.get(i).getBookingNumber(), bookings.get(i).getBookingDate());
+        }
+      }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
