@@ -10,6 +10,7 @@ public class VenueHireSystem {
   public ArrayList<Venue> venues = new ArrayList<Venue>();
   public String dateInput;
   public String bookingname;
+  public Integer capacity;
   
   public VenueHireSystem() {}
 
@@ -99,16 +100,27 @@ public class VenueHireSystem {
     for (int i = 0; i < venues.size(); i++) {
       if (venues.get(i).getVenueCode().equals(options[0])) {
         bookingname = venues.get(i).getVenueName();
+        capacity = Integer.parseInt(venues.get(i).getCapacityInput());
         break;
       }
       if (i == venues.size() - 1) {
         MessageCli.BOOKING_NOT_MADE_VENUE_NOT_FOUND.printMessage(options[0]);
         return;
       }
-
+      
     }
+    Integer bookingcapacity = Integer.parseInt(options[3]);
+    if (bookingcapacity < (capacity/4)) {
+      bookingcapacity = capacity/4;
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], bookingcapacity.toString(), capacity.toString());
+    }
+    else if (bookingcapacity > capacity) {
+      bookingcapacity = capacity;
+      MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], bookingcapacity.toString(), capacity.toString());
+    }
+    
     String bookingReference = BookingReferenceGenerator.generateBookingReference();
-    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], options[3]);
+    MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], bookingcapacity.toString());
   }
 
   public void printBookings(String venueCode) {
