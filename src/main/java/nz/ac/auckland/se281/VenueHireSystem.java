@@ -118,6 +118,28 @@ public class VenueHireSystem {
       bookingcapacity = capacity;
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], bookingcapacity.toString(), capacity.toString());
     }
+
+//     options[0] = "FFH"
+// options[1] = "26/02/2024"
+// options[2] = "client001@email.com"
+// options[3] = "70"
+// String day = dateParts[0];   // "26"
+// String month = dateParts[1]; // "02"
+// String year = dateParts[2];  // "2024"
+    String[] systemdate = dateInput.split("/");
+    String[] bookingdate = options[1].split("/");
+    for (int i = 2; i >= 0; i--) {
+      if (Integer.parseInt(bookingdate[i]) > Integer.parseInt(systemdate[i])) {
+        break;
+      }
+      else
+      if (Integer.parseInt(bookingdate[i]) < Integer.parseInt(systemdate[i])) {
+        MessageCli.BOOKING_NOT_MADE_PAST_DATE.printMessage(options[1], dateInput);
+        return;
+      }
+    }
+
+
     
     String bookingReference = BookingReferenceGenerator.generateBookingReference();
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], bookingcapacity.toString());
