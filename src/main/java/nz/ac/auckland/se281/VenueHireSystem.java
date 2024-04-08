@@ -14,6 +14,7 @@ public class VenueHireSystem {
   public Integer capacity;
   public String hirefee;
   public String nextdate;
+  public String venuename;
 
   
   public VenueHireSystem() {}
@@ -167,7 +168,17 @@ public class VenueHireSystem {
   }
 
   public void printBookings(String venueCode) {
-    // TODO implement this method
+    for (int i = 0; i < venues.size(); i++) {
+      if (venues.get(i).getVenueCode().equals(venueCode)) {
+        venuename = venues.get(i).getVenueName();
+        MessageCli.PRINT_BOOKINGS_HEADER.printMessage(venues.get(i).getVenueName());
+        break;
+      }
+      if (i == venues.size() - 1) {
+        MessageCli.PRINT_BOOKINGS_VENUE_NOT_FOUND.printMessage(venueCode);
+        return;
+      }
+    }
   }
 
   public void addCateringService(String bookingReference, CateringType cateringType) {
