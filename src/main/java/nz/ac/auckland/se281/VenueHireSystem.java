@@ -8,9 +8,11 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class VenueHireSystem {
 
   public ArrayList<Venue> venues = new ArrayList<Venue>();
+  public ArrayList<Booking> bookings = new ArrayList<Booking>();
   public String dateInput;
   public String bookingname;
   public Integer capacity;
+  public String hirefee;
   
   public VenueHireSystem() {}
 
@@ -101,6 +103,7 @@ public class VenueHireSystem {
       if (venues.get(i).getVenueCode().equals(options[0])) {
         bookingname = venues.get(i).getVenueName();
         capacity = Integer.parseInt(venues.get(i).getCapacityInput());
+        hirefee = venues.get(i).getHireFee();
         break;
       }
       if (i == venues.size() - 1) {
@@ -119,7 +122,7 @@ public class VenueHireSystem {
       MessageCli.BOOKING_ATTENDEES_ADJUSTED.printMessage(options[3], bookingcapacity.toString(), capacity.toString());
     }
 
-//     options[0] = "FFH"
+// options[0] = "FFH"
 // options[1] = "26/02/2024"
 // options[2] = "client001@email.com"
 // options[3] = "70"
@@ -139,9 +142,15 @@ public class VenueHireSystem {
       }
     }
 
-
+    for (int i = 0; i < bookings.size(); i++) {
+      if (bookings.get(i).getVenueCode().equals(options[0]) && bookings.get(i).getBookingDate().equals(options[1])) {
+        MessageCli.BOOKING_NOT_MADE_VENUE_ALREADY_BOOKED.printMessage(bookingname, options[1]);
+        return;
+      }
+    }
     
     String bookingReference = BookingReferenceGenerator.generateBookingReference();
+    bookings.add(new Booking(bookingname, options[0], capacity.toString(), hirefee, options[1], options[2], bookingReference, bookingcapacity.toString()));
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], bookingcapacity.toString());
   }
 
