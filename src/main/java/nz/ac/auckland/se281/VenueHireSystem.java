@@ -13,6 +13,8 @@ public class VenueHireSystem {
   public String bookingname;
   public Integer capacity;
   public String hirefee;
+  public String nextdate;
+
   
   public VenueHireSystem() {}
 
@@ -33,7 +35,17 @@ public class VenueHireSystem {
       MessageCli.NUMBER_VENUES.printMessage("are", size, "s");
     }
     for (int i = 0; i < venues.size(); i++) {
-      MessageCli.VENUE_ENTRY.printMessage(venues.get(i).getVenueName(), venues.get(i).getVenueCode(), venues.get(i).getCapacityInput(), venues.get(i).getHireFee(), "N/A");
+      nextdate = dateInput;
+      for (int j = 0; j < bookings.size(); j++) {
+        if (bookings.get(j).getVenueCode().equals(venues.get(i).getVenueCode()) && bookings.get(j).getBookingDate().equals(nextdate)) {
+          String[] systemdate = nextdate.split("/");
+          systemdate[0] = String.format("%02d", Integer.parseInt(systemdate[0]) + 1);
+          nextdate = systemdate[0] + "/" + systemdate[1] + "/" + systemdate[2];
+          j = 0;
+        }
+      }
+
+      MessageCli.VENUE_ENTRY.printMessage(venues.get(i).getVenueName(), venues.get(i).getVenueCode(), venues.get(i).getCapacityInput(), venues.get(i).getHireFee(), nextdate);
     }
   }
 
