@@ -46,6 +46,9 @@ public class VenueHireSystem {
           j = 0;
         }
       }
+      if (nextdate == null) {
+        nextdate = "N/A";
+      }
 
       MessageCli.VENUE_ENTRY.printMessage(venues.get(i).getVenueName(), venues.get(i).getVenueCode(), venues.get(i).getCapacityInput(), venues.get(i).getHireFee(), nextdate);
     }
@@ -230,7 +233,8 @@ public class VenueHireSystem {
     for (int i = 0; i < bookings.size(); i++) {
       if (bookings.get(i).getBookingNumber().equals(bookingReference)) {
         MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(bookingReference, bookings.get(i).getBookingEmail(), bookings.get(i).getCurrentDate(), bookings.get(i).getBookingDate(), bookings.get(i).getAttendees(), bookings.get(i).getVenueName());
-        MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(bookings.get(i).getHireFee());
+        hirefee = bookings.get(i).getHireFee();
+        MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(hirefee);
       }
     }
 
