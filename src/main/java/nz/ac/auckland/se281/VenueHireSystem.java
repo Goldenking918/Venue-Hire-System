@@ -16,7 +16,10 @@ public class VenueHireSystem {
   public String hirefee;
   public String nextdate;
   public String venuename;
-
+  public Integer cateringfees = 0;
+  public Integer musicfees = 0;
+  public Integer floralfees = 0;
+  public Integer totalfees;
   
   public VenueHireSystem() {}
 
@@ -240,16 +243,20 @@ public class VenueHireSystem {
     for (int i = 0; i < services.size(); i++) {
       if (services.get(i).getBookingReference().equals(bookingReference)) {
         if (services.get(i) instanceof Catering) {
+          cateringfees = Integer.parseInt(services.get(i).getTotalCost());
           MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(((Catering) services.get(i)).cateringType.getName(), services.get(i).getTotalCost());
         }
         else if (services.get(i) instanceof Music) {
+          musicfees = Integer.parseInt(services.get(i).getTotalCost());
           MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(services.get(i).getTotalCost());
         }
         else if (services.get(i) instanceof Floral) {
+          floralfees = Integer.parseInt(services.get(i).getTotalCost());
           MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(((Floral) services.get(i)).floralType.getName(), services.get(i).getTotalCost());
         }
       }
      }
-
+     totalfees = Integer.parseInt(hirefee) + cateringfees + musicfees + floralfees;
+     MessageCli.INVOICE_CONTENT_BOTTOM_HALF.printMessage(totalfees.toString());
   }
 }
