@@ -218,6 +218,7 @@ public class VenueHireSystem {
   public void addServiceFloral(String bookingReference, FloralType floralType) {
     for (int i = 0; i < bookings.size(); i++) {
       if (bookings.get(i).getBookingNumber().equals(bookingReference)) {
+        services.add(new Floral(bookingReference, floralType));
         MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Floral ("+ floralType.getName()+")", bookingReference);
         return;
       }
