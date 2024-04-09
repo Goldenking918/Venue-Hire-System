@@ -9,6 +9,7 @@ public class VenueHireSystem {
 
   public ArrayList<Venue> venues = new ArrayList<Venue>();
   public ArrayList<Booking> bookings = new ArrayList<Booking>();
+  public ArrayList <Service> services = new ArrayList<Service>();
   public String dateInput;
   public String bookingname;
   public Integer capacity;
@@ -195,6 +196,7 @@ public class VenueHireSystem {
   public void addCateringService(String bookingReference, CateringType cateringType) {
     for (int i = 0; i < bookings.size(); i++) {
       if (bookings.get(i).getBookingNumber().equals(bookingReference)) {
+        services.add(new Catering(bookingReference, cateringType, Integer.parseInt(bookings.get(i).getAttendees())));
         MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Catering ("+cateringType.getName()+")", bookingReference);
         return;
       }
