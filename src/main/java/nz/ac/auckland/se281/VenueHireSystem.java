@@ -207,6 +207,7 @@ public class VenueHireSystem {
   public void addServiceMusic(String bookingReference) {
     for (int i = 0; i < bookings.size(); i++) {
       if (bookings.get(i).getBookingNumber().equals(bookingReference)) {
+        services.add(new Music(bookingReference));
         MessageCli.ADD_SERVICE_SUCCESSFUL.printMessage("Music", bookingReference);
         return;
       }
