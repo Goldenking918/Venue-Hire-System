@@ -245,6 +245,9 @@ public class VenueHireSystem {
         else if (services.get(i) instanceof Music) {
           MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(services.get(i).getTotalCost());
         }
+        else if (services.get(i) instanceof Floral) {
+          MessageCli.INVOICE_CONTENT_FLORAL_ENTRY.printMessage(((Floral) services.get(i)).floralType.getName(), services.get(i).getTotalCost());
+        }
       }
      }
 
