@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.Types.FloralType;
 public class FloralService extends Service {
   protected FloralType floralType;
 
-  public Floral(String bookingReference, FloralType floralType) {
+  public FloralService(String bookingReference, FloralType floralType) {
     super(bookingReference);
     this.floralType = floralType;
   }
