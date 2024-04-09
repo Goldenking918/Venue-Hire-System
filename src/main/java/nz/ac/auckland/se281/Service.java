@@ -7,9 +7,6 @@ public abstract class Service {
     this.bookingreference = bookingreference;
   }
 
-  public abstract String getType(); {
-  }
-
   public abstract String getTotalCost(); {
   }
 

@@ -4,18 +4,13 @@ import nz.ac.auckland.se281.Types.CateringType;
 
 public class Catering extends Service{
 
-  private CateringType cateringType;
+  CateringType cateringType;
   private Integer attendees;
 
   public Catering(String bookingreference, CateringType cateringType, Integer attendees) {
     super(bookingreference);
     this.cateringType = cateringType;
     this.attendees = attendees;
-  }
-
-  @Override
-  public String getType() {
-    return cateringType.getName();
   }
 
   @Override

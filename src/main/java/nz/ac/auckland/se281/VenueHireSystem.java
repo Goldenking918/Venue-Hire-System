@@ -237,6 +237,13 @@ public class VenueHireSystem {
         MessageCli.INVOICE_CONTENT_VENUE_FEE.printMessage(hirefee);
       }
     }
+    for (int i = 0; i < services.size(); i++) {
+      if (services.get(i).getBookingReference().equals(bookingReference)) {
+        if (services.get(i) instanceof Catering) {
+          MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(((Catering) services.get(i)).cateringType.getName(), services.get(i).getTotalCost());
+        }
+      }
+     }
 
   }
 }

@@ -8,11 +8,6 @@ public class Music extends Service{
   }
 
   @Override
-  public String getType() {
-    return "Music";
-  }
-
-  @Override
   public String getTotalCost() {
     return "500";
   }
