@@ -242,6 +242,9 @@ public class VenueHireSystem {
         if (services.get(i) instanceof Catering) {
           MessageCli.INVOICE_CONTENT_CATERING_ENTRY.printMessage(((Catering) services.get(i)).cateringType.getName(), services.get(i).getTotalCost());
         }
+        else if (services.get(i) instanceof Music) {
+          MessageCli.INVOICE_CONTENT_MUSIC_ENTRY.printMessage(services.get(i).getTotalCost());
+        }
       }
      }
 
