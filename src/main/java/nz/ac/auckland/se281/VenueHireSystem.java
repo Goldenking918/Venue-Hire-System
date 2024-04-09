@@ -164,7 +164,7 @@ public class VenueHireSystem {
     }
     
     String bookingReference = BookingReferenceGenerator.generateBookingReference();
-    bookings.add(new Booking(bookingname, options[0], capacity.toString(), hirefee, options[1], options[2], bookingReference, bookingcapacity.toString()));
+    bookings.add(new Booking(bookingname, options[0], capacity.toString(), hirefee, options[1], options[2], bookingReference, bookingcapacity.toString(), dateInput));
     MessageCli.MAKE_BOOKING_SUCCESSFUL.printMessage(bookingReference, bookingname, options[1], bookingcapacity.toString());
   }
 
@@ -227,6 +227,10 @@ public class VenueHireSystem {
   }
 
   public void viewInvoice(String bookingReference) {
-    // TODO implement this method
+    for (int i = 0; i < bookings.size(); i++) {
+      if (bookings.get(i).getBookingNumber().equals(bookingReference)) {
+        MessageCli.INVOICE_CONTENT_TOP_HALF.printMessage(bookingReference, bookings.get(i).getBookingEmail(), bookings.get(i).getCurrentDate(), bookings.get(i).getBookingDate(), bookings.get(i).getAttendees(), bookings.get(i).getVenueName());
+      }
+    }
   }
 }
