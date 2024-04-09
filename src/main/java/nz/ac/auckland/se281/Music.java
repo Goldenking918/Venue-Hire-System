@@ -2,8 +2,8 @@ package nz.ac.auckland.se281;
 
 public class Music extends Service{
 
-  public Music(String bookingreference) {
-    super(bookingreference);
+  public Music(String bookingReference) {
+    super(bookingReference);
 
   }
 
