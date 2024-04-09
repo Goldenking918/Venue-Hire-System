@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Types.CateringType;
 
-public class Catering extends Service{
+public class Catering extends Service {
 
   protected CateringType cateringType;
   private Integer attendees;
@@ -15,8 +15,7 @@ public class Catering extends Service{
 
   @Override
   public String getTotalCost() {
-    Integer TotalCost = cateringType.getCostPerPerson() * attendees;
-    return TotalCost.toString();
+    Integer totalCost = cateringType.getCostPerPerson() * attendees;
+    return totalCost.toString();
   }
-
 }

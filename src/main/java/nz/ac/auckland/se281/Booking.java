@@ -1,31 +1,40 @@
 package nz.ac.auckland.se281;
 
-public class Booking extends Venue{
-  private String bookingdate;
-  private String bookingemail;
-  private String bookingnumber;
+public class Booking extends Venue {
+  private String bookingDate;
+  private String bookingEmail;
+  private String bookingNumber;
   private String attendees;
-  private String currentdate;
+  private String currentDate;
 
-  public Booking(String venueName, String venueCode, String capacityInput, String hireFee, String bookingdate, String bookingemail, String bookingnumber, String attendees, String currentdate) {
+  public Booking(
+      String venueName,
+      String venueCode,
+      String capacityInput,
+      String hireFee,
+      String bookingDate,
+      String bookingEmail,
+      String bookingNumber,
+      String attendees,
+      String currentDate) {
     super(venueName, venueCode, capacityInput, hireFee);
-    this.bookingdate = bookingdate;
-    this.bookingemail = bookingemail;
-    this.bookingnumber = bookingnumber;
+    this.bookingDate = bookingDate;
+    this.bookingEmail = bookingEmail;
+    this.bookingNumber = bookingNumber;
     this.attendees = attendees;
-    this.currentdate = currentdate;
+    this.currentDate = currentDate;
   }
 
   public String getBookingDate() {
-    return bookingdate;
+    return bookingDate;
   }
 
   public String getBookingEmail() {
-    return bookingemail;
+    return bookingEmail;
   }
 
   public String getBookingNumber() {
-    return bookingnumber;
+    return bookingNumber;
   }
 
   public String getAttendees() {
@@ -33,7 +42,6 @@ public class Booking extends Venue{
   }
 
   public String getCurrentDate() {
-    return currentdate;
+    return currentDate;
   }
-
 }
